@@ -51,7 +51,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("💡 only admin can tap this button !", show_alert=True)
+            await cb.answer("🖤Sadəcə Adminlər Üçün Buton !", show_alert=True)
             return
 
     return decorator
@@ -116,10 +116,10 @@ def updated_stats(chat, queue, vol=100):
         stats = "⚙ settings for **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "• volume: `{}%`\n".format(vol)
-            stats += "• song played: `{}`\n".format(len(que))
-            stats += "• now playing: **{}**\n".format(queue[0][0])
-            stats += "• request by: {}".format(queue[0][1].mention(style="md"))
+            stats += "• Səs: `{}%`\n".format(vol)
+            stats += "• Mahnı Oxunur: `{}`\n".format(len(que))
+            stats += "• İndi Oxunur: **{}**\n".format(queue[0][0])
+            stats += "• İstədi: {}".format(queue[0][1].mention(style="md"))
     else:
         stats = None
     return stats
@@ -162,24 +162,24 @@ async def music_onoff(_, message):
         return
     if len(message.command) != 2:
         await message.reply_text(
-            "**• usage:**\n\n `/music on` & `/music off`"
+            "**• İstifadə:**\n\n `/music on` & `/music off`"
         )
         return
     status = message.text.split(None, 1)[1]
     message.chat.id
     if status in ("ON", "on", "On"):
-        lel = await message.reply("`processing...`")
+        lel = await message.reply("`Axtarılır🤍`")
         if not message.chat.id in DISABLED_GROUPS:
-            await lel.edit("» **music player already turned on.**")
+            await lel.edit("» **Mahnı Oxuducu Onsuzda Aktivdir.**")
             return
         DISABLED_GROUPS.remove(message.chat.id)
-        await lel.edit(f"✅ **music player turned on** for users in `{message.chat.title}`")
+        await lel.edit(f"✅ **Mahnı Oxudulur** İstifadəçi Tərəfindən `{message.chat.title}`")
 
     elif status in ("OFF", "off", "Off"):
-        lel = await message.reply("`processing...`")
+        lel = await message.reply("`Axtarılır`")
 
         if message.chat.id in DISABLED_GROUPS:
-            await lel.edit("» **music player already turned off.**")
+            await lel.edit("» **Musiqi Oxuducu  already turned off.**")
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(f"✅ **music player turned off** for users in `{message.chat.title}`")
