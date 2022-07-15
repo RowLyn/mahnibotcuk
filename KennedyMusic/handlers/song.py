@@ -50,7 +50,7 @@ def song(client, message):
     rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
     query = "".join(" " + str(i) for i in message.command[1:])
     print(query)
-    m = message.reply("🔎 **Searching**")
+    m = message.reply("Mahnı Axtarılır💸")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -65,21 +65,21 @@ def song(client, message):
         results[0]["url_suffix"]
         results[0]["views"]
     except Exception as e:
-        m.edit("❌ **Song Not found.**\n\n**Try Entering a clearer song title.**")
+        m.edit("Mahnı Tapılmadı\n\nMahnı Adını Düzgün Yazdığınızdan Əmin Olun")
         print(str(e))
         return
-    m.edit("📥 **Downloading**")
+    m.edit("⚡Yüklənir")
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
         rep = f"""
-**🏷 Title :** [{title}]({link})
-**⏱️ Duration :** {duration}
-**👁 Viewer :** {results[0]['views']}
-**🤖 Uploader :** [{BOT_NAME}](https://t.me/{BOT_USERNAME})
-**👤 Requested by :** {rpk}
+**🏷 Musiqi Adı :** [{title}]({link})
+**⏱️ Mahnı Müddəti :** {duration}
+**👁 Baxış Sayı :** {results[0]['views']}
+**🤖 Yüklədi :** [{BOT_NAME}](https://t.me/{BOT_USERNAME})
+**🤍 İstəyən :** {rpk}
 """
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
@@ -95,7 +95,7 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ **Error**")
+        m.edit("Xəta")
         print(e)
     try:
         os.remove(audio_file)
@@ -262,17 +262,17 @@ async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
         await message.reply_text(
-            "**Downloadan yang lain sedang berlangsung, coba lagi nanti**"
+            "**Video Yüklənir Gözləyin.**"
         )
         return
 
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"`Getting {urlissed} From YouTube. Please wait!`"
+        message.chat.id, f"`Yt Url si Alındı {urlissed} Gözləyin!`"
     )
     if not urlissed:
-        await pablo.edit("**Syntax error** type /help for more info!`")
+        await pablo.edit("** Xəta ** /help  Yazıb Əmrlərə Baxa Bilərsən!`")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -306,7 +306,7 @@ async def ytmusic(client, message: Message):
 
             if duration > DURATION_LIMIT:
                 await pablo.edit(
-                    f"❌ **Videos longer than {DURATION_LIMIT} minutes are not allowed, videos you want to download are {duration} minutes**"
+                    f"Video Limitdən Uzundur {DURATION_LIMIT} Qədər İcazə Var, Sənin Yüklədiyin Video{duration} dəqiqə**"
                 )
                 is_downloading = False
                 return
@@ -319,7 +319,7 @@ async def ytmusic(client, message: Message):
 
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"**Title ➠** [{thum}]({mo}) \n**Channel ➠ ** {thums} \n**Requested for ➠** {urlissed} "
+    capy = f"**Ad ➠** [{thum}]({mo}) \n**Kanal ➠ ** {thums} \n**İstədi➠** {urlissed} "
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -332,7 +332,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"**Uploading** `{urlissed}` **From YouTube Music!**",
+            f"**Yükləndi** `{urlissed}` **Youtube Music Tərəfindən!**",
             file_stark,
         ),
     )
