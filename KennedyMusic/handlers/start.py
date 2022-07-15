@@ -54,34 +54,34 @@ async def _human_time_duration(seconds):
 @Client.on_message(command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>✨ Welcome {message.from_user.mention()}!</b>
+        f"""<b>⚡sᴀᴀᴀᴍ {message.from_user.mention()}!</b>
 
-**💭 [{BOT_NAME}](https://t.me/{GROUP_SUPPORT}) allows you to play music on groups through the new Telegram's voice chats!**
+**💭 [{BOT_NAME}](https://t.me/{GROUP_SUPPORT}) ᴋᴏ̈ᴍᴇʏ ᴜ̈ᴄ̧ᴜ̈ɴ sᴜᴘᴘᴏʀᴛ ɢʀᴜʙᴜɴᴀ ɢᴇʟ!**
 
-💡 Find out all the **Bot's commands** and how they work by clicking on the **» ⚙️ Commands** button!""",
+💡 ʙᴜʀᴅᴀɴ ʙᴏᴛᴜɴ ᴇᴍʀʟᴇʀɪɴᴇ ʙᴀxᴀ ʙɪʟᴇʀsᴇɴ**» ⚙️ 𝐄𝐌𝐑** button!""",
         reply_markup=InlineKeyboardMarkup(
                         [ 
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "➕ 𝐌𝐄𝐍𝐈 𝐆𝐑𝐔𝐁𝐀 𝐄𝐋𝐀𝐕𝐄 𝐄𝐓 ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "⚙️ Command​​", callback_data="cbhelp"
+                        "⚙️ 𝐄𝐌𝐑", callback_data="cbhelp"
                     ),
                     InlineKeyboardButton(
-                        "❤️ Donate", url=f"https://t.me/{OWNER_NAME}")
+                        "❤️ 𝐊𝐎𝐌𝐄𝐊", url=f"https://t.me/{OWNER_NAME}")
                 ],[
                     InlineKeyboardButton(
-                        "👥 Official Group​​", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐔𝐁", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📮 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
+                        "𝐑𝐄𝐒𝐌𝐈 𝐊𝐀𝐍𝐀𝐋", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
                     InlineKeyboardButton(
-                        "🛠️ Source Code 🛠️", url=f"{UPSTREAM_REPO}")
+                        "🛠️ 𝐑𝐄𝐏𝐎 🛠️", url=f"{UPSTREAM_REPO}")
                 ],[
                     InlineKeyboardButton(
-                        "❔ About me​​", callback_data="cbabout"
+                        "❔ 𝐇𝐀𝐐𝐐𝐈𝐌𝐃𝐀​​", callback_data="cbabout"
                     )
                 ]
             ]
@@ -98,10 +98,10 @@ async def start(client: Client, message: Message):
     uptime = await _human_time_duration(int(uptime_sec))
     delta_ping = time() - start
     await message.reply_text(
-        f"""<b>👋 **Hello {message.from_user.mention()}** ❗</b>
+        f"""<b>🤍 **𝐒𝐀𝐋𝐀𝐌 {message.from_user.mention()}** ❗</b>
 
-✅ **I'm active and ready to play music!
-• Start time: `{START_TIME_ISO}`
+✅ **𝐌𝐄𝐍 𝐀𝐊𝐓𝐈𝐕𝐄𝐌!
+• 𝐁𝐀𝐒̧𝐋𝐀𝐌𝐀 𝐙𝐀𝐌𝐀𝐍𝐈: `{START_TIME_ISO}`
 """,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -118,16 +118,14 @@ async def start(client: Client, message: Message):
 @Client.on_message(command(["help", f"help@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def help(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>👋 **Hello** {message.from_user.mention()}</b>
-
-**Please press the button below to read the explanation and see the list of available commands !**
+        f"""<b>🤍 **𝐒𝐀𝐋𝐀𝐌** {message.from_user.mention()}</b>
 
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text=" Hoe to use me ❔", url=f"https://t.me/{BOT_USERNAME}"
+                        text=" 𝐇𝐄𝐋𝐏 𝐐𝐀𝐘𝐃𝐀𝐒𝐈 ❔", url=f"https://t.me/{BOT_USERNAME}"
                     )
                 ]
             ]
